@@ -76,7 +76,7 @@ Copy-paste it inside the actions list and adjust the values like following:
 - test: If true, waits for the position to be the color stored in testColor before placing the tower (useful for moving platforms etc.). We don't need that, so let's leave it as is.
 - targetting: Specifies the amount of the targetting hotkey getting pressed (right after placing and selecting the tower). Setting the Dart to Close sounds like a good idea, so let's set it to `2`.
 - upgrades: Contains a list of all the upgrades to be done to the tower after placing it. We don't want to upgrade the dart monkey for now, so let's empty that list.
-- 
+
 ![](images/08_first_action.png)
 
 Next, let's place Ben to make some money. To append another action to the actions list, you just need to put a comma after the closing bracket and can paste another one right behind. Do that, choose coordinates to the right of the middle circle and adjust all the values by yourself to get the hang of it. Your file should look something like this now:
@@ -140,7 +140,7 @@ Now, before you run away and test your script, let me really quickly show you wh
 - Select the coordinates anywhere in the script and press Ctrl + F.
 - In the search window in the top right, click the arrow on the left.
 - In the lower text field, enter your new coordinates and click the "Replace all" button.
-- 
+
 ![](images/14_find_and_replace.gif)
 
 Now, if you followed the tutorial along well, you should have a working Balance Easy Grinder! To try it, either click the play button in the top right or just double click it in the file explorer as usual; then go to the home screen and press 8. If you didn't get what a specific part of the script should look like now, find the finished script we just build [here](./tutorial.ahk).
