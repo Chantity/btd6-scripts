@@ -464,8 +464,40 @@ changeTargetting(x, y, amount) {
     }
 }
 
-selectMap(mapNumberOnPage, map) {
-    ;expects you to start at the first page of the expert maps in the map selection screen
+selectMap(difficulty, page, mapNumberOnPage, map) {
+    search(550, 620, 0xFFFFFF) ; play button on home screen
+    sleep(config.speed)
+    click(550, 620)
+    sleep(800)
+    if(difficulty == "beginner") {
+        click(900, 650) ;expert
+        sleep(200)
+        loop(page) {
+            click(391, 650) ;beginner
+            sleep(200)
+        }
+    } else if(difficulty == "intermediate") {
+        click(900, 650) ;expert
+        sleep(200)
+        loop(page) {
+            click(550, 650) ;intermediate
+            sleep(200)
+        }
+    } else if(difficulty == "advanced") {
+        click(900, 650) ;expert
+        sleep(200)
+        loop(page) {
+            click(725, 650) ;intermediate
+            sleep(200)
+        }
+    } else if(difficulty == "expert") {
+        click(391, 650) ;beginner
+        sleep(200)
+        loop(page) {
+            click(900, 650) ;expert
+            sleep(200)
+        }
+    }
     px := 0
     py := 0
     bonusMap := ""
@@ -496,30 +528,9 @@ selectMap(mapNumberOnPage, map) {
     return map
 }
 
-7:: {
-    ; mouseX := 0
-    ; mouseY := 0
-    ; MouseGetPos(&mouseX, &mouseY)
-    ; MsgBox(PixelGetColor(992, 526))
-    MouseMove(config.towers.village.buyTestCoords.x, config.towers.village.buyTestCoords.y)
-}
-
 8:: {
     start: ; start screen
-    search(550, 620, 0xFFFFFF)
-    sleep(config.speed)
-    click(550, 620)
-    sleep(800)
-    click(900, 650)
-    sleep(1000)
-    click(391, 650)
-    sleep(200)
-    click(391, 650)
-    sleep(200)
-    click(391, 650)
-    sleep(200)
-
-    map := selectMap(6, "cubism")
+    map := selectMap("beginner", 3, 6, "cubism")
     sleep(config.speed)
     send("{" hotkeys.functional.play "}")
     sleep(config.speed)
