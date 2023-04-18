@@ -600,14 +600,6 @@ selectMap(difficulty, page, mapNumberOnPage, map) {
     return map
 }
 
-7:: {
-    ; mouseX := 0
-    ; mouseY := 0
-    ; MouseGetPos(&mouseX, &mouseY)
-    ; MsgBox(PixelGetColor(992, 526))
-    MouseMove(config.towers.village.buyTestCoords.x, config.towers.village.buyTestCoords.y)
-}
-
 8:: {
     start: ; start screen
     map := selectMap("beginner", 3, 6, "cubism")
