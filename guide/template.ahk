@@ -180,7 +180,8 @@ global config := {
     maps: {
         cubism: {
             gamemode: "impoppable",
-            actions: [{
+            actions: [
+                    {
                         action: "place",
                         tower: "dart",
                         coords: [440, 348],
@@ -590,12 +591,12 @@ selectMap(difficulty, page, mapNumberOnPage, map) {
 }
 
 9:: {
-    MsgBox("Insta Grinder Reloaded", "Reload", "0x0")
+    MsgBox("Script Reloaded", "Reload", "0x0")
     reload
     return
 }
 
 0:: {
-    MsgBox("Insta Grinder Stopped", "Exit", "0x0")
+    MsgBox("Script Stopped", "Exit", "0x0")
     exitapp
 }
