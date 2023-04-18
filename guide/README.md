@@ -16,7 +16,6 @@ To edit the script, you'll need a proper text editor; the default Windows Notepa
 #### **Setup**
 - Press Win + R once again, type `%APPDATA%/VSCodium` and press Enter.
 - In the opened folder, create a new file called `product.json` and open it up with a text editor (e.g. VSCodium). Past the following in there:
-
 ```json
 {
     "extensionsGallery": {
