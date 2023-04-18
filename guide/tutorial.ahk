@@ -184,7 +184,7 @@ global config := {
                 {
                     action: "place",
                     tower: "dart",
-                    coords: [645, 382],
+                    coords: [471, 378],
                     test: false,
                     testColor: "0xFFFFFF",
                     targetting: 0,
