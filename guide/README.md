@@ -143,6 +143,6 @@ Now, before you run away and test your script, let me really quickly show you wh
 
 ![](images/14_find_and_replace.gif)
 
-Now, if you followed the tutorial along well, you should have a working Balance Easy Grinder! To try it, either click the play button in the top right or just double click it in the file explorer as usual; then go to the home screen and press 8. If you didn't get what a specific part of the script should look like now, find the finished script we just built [here](./tutorial.ahk).
+Now, if you followed the tutorial along well, you should have a working Balance Easy Grinder! To try it, either click the play button in the top right or just double click it in the file explorer as usual; then go to the home screen and press 8. If you didn't get what a specific part of the script should look like now, find the finished script we just built [here](./tutorial.ahk) (or read the file on GitHub [here](https://github.com/Chantity/btd6-scripts/blob/main/guide/tutorial.ahk)).
 
 ## Happy scripting!
