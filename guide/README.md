@@ -79,7 +79,7 @@ Copy-paste it inside the actions list and adjust the values like following:
 
 ![](images/08_first_action.png)
 
-Next, let's place Ben to make some money. To append another action to the actions list, you just need to put a comma after the closing bracket and can paste another one right behind. Do that, choose coordinates to the right of the middle circle and adjust all the values by yourself to get the hang of it. Your file should look something like this now:
+Next, let's place Ben to make some money. To append another action to the actions list, you just need to put a comma after the closing bracket and can paste another one right behind. Do that, choose coordinates in the middle circle and adjust all the values by yourself to get the hang of it. Your file should look something like this now:
 
 ![](images/09_appending_actions.png)
 
@@ -136,13 +136,13 @@ Balance is an Intermediate map in the 6th position on the first page, so we need
 
 ![](images/13_adjusting_map_selection_method_call.png)
 
-Now, before you run away and test your script, let me really quickly show you what to do if you change your mind about a tower and want it at a different position. For our example, lets say we suddenly want our our dart on the other side of the circle. Instead of finding and adjusting every single place, upgrade and delete action about that dart, instead you can use this trick: [471,378]
+Now, before you run away and test your script, let me really quickly show you what to do if you change your mind about a tower and want it at a different position. For our example, lets say we suddenly want our our dart on the other side of the circle. Instead of finding and adjusting every single place, upgrade and delete action about that dart, instead you can use this trick:
 - Select the coordinates anywhere in the script and press Ctrl + F.
 - In the search window in the top right, click the arrow on the left.
 - In the lower text field, enter your new coordinates and click the "Replace all" button.
 
 ![](images/14_find_and_replace.gif)
 
-Now, if you followed the tutorial along well, you should have a working Balance Easy Grinder! To try it, either click the play button in the top right or just double click it in the file explorer as usual; then go to the home screen and press 8. If you didn't get what a specific part of the script should look like now, find the finished script we just build [here](./tutorial.ahk).
+Now, if you followed the tutorial along well, you should have a working Balance Easy Grinder! To try it, either click the play button in the top right or just double click it in the file explorer as usual; then go to the home screen and press 8. If you didn't get what a specific part of the script should look like now, find the finished script we just built [here](./tutorial.ahk).
 
 ## Happy scripting!
