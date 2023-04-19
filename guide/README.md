@@ -136,7 +136,7 @@ Balance is an Intermediate map in the 6th position on the first page, so we need
 
 ![](images/13_adjusting_map_selection_method_call.png)
 
-Now, before you run away and test your script, let me really quickly show you what to do if you change your mind about a tower and want it at a different position. For our example, lets say we suddenly want our our dart on the other side of the circle. Instead of finding and adjusting every single place, upgrade and delete action about that dart, instead you can use this trick:
+Now, before you run away and test your script, let me really quickly show you what to do if you change your mind about a tower and want it at a different position. For our example, lets say we suddenly want our dart on the other side of the circle. Instead of finding and adjusting every single place, upgrade and delete action about that dart, instead you can use this trick:
 - Select the coordinates anywhere in the script and press Ctrl + F.
 - In the search window in the top right, click the arrow on the left.
 - In the lower text field, enter your new coordinates and click the "Replace all" button.
