@@ -291,6 +291,14 @@ changeTargetting(x, y, amount) {
     }
 }
 
+/**
+ * Starts at the home screen and selects the given map.
+ * @param difficulty Map Difficulty (Beginner, Intermediate, Advanced or Expert)
+ * @param page Page within that difficulty that the map is on
+ * @param mapNumberOnPage Position of the map within that page (top left = 1, bottom right = 6)
+ * @param map Name of the map
+ * @returns map Name of the map
+ */
 selectMap(difficulty, page, mapNumberOnPage, map) {
     search(550, 620, 0xFFFFFF) ; play button on home screen
     sleep(config.speed)

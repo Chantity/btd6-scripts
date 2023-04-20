@@ -899,6 +899,10 @@ checkBonus(x, y) {
     return 
 }
 
+/**
+ * Starts at the first page of the expert maps and selects the map with the event bonus.
+ * @returns map Name of the map
+ */
 selectMapWithBonus() {
     ;expects you to start at the first page of the expert maps in the map selection screen
     px := 0
