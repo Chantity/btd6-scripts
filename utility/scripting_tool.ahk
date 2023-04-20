@@ -6,22 +6,21 @@ actions := ""
 towerPositions := []
 
 6:: {
-    A_Clipboard := SubStr(actions, 3)
+    A_Clipboard := SubStr(actions, 3) ;remove the first comma and space before putting to clipboard
     MsgBox("Actions copied to clipboard")
-    ; ToolTip("lol")
 }
 
 7:: {
     mouseX := 0
     mouseY := 0
     MouseGetPos(&mouseX, &mouseY)
-    tower := InputBox("Enter the tower name: ", "Place | Scripting Tool by Chantity")
-    if(tower.result == "OK") {
+    towerInput := InputBox("Enter the tower name: ", "Place | Scripting Tool by Chantity")
+    if(towerInput.result == "OK" && towerInput.value != "") {
         upgrades := calcUpgrades(InputBox("Enter the upgrade sequence (using 1, 2, 3): ", "Place | Scripting Tool by Chantity").value)
-        global actions .= ", {`n`taction: `"place`",`n`ttower: `"" . tower.value . "`",`n`tcoords: [" . mouseX . ", " . mouseY . "],`n`ttest: false,`n`ttestColor: `"0xFFFFFF`",`n`ttargetting: 0,`n`tupgrades: [" . upgrades . "]`n}"
-        towerPositions.Push([tower.value, mouseX, mouseY])
+        global actions .= ", {`n`taction: `"place`",`n`ttower: `"" . towerInput.value . "`",`n`tcoords: [" . mouseX . ", " . mouseY . "],`n`ttest: false,`n`ttestColor: `"0xFFFFFF`",`n`ttargetting: 0,`n`tupgrades: [" . upgrades . "]`n}"
+        towerPositions.Push([towerInput.value, mouseX, mouseY])
     } else {
-        ToolTip("Upgrade Action aborted")
+        ToolTip("Place Action aborted")
         SetTimer () => ToolTip(), -2500
     }
 }
@@ -30,16 +29,10 @@ towerPositions := []
     mouseX := 0
     mouseY := 0
     MouseGetPos(&mouseX, &mouseY)
-    tower := InputBox("Enter the tower name: ", "Sell | Scripting Tool by Chantity")
-    if(tower.result == "OK") {
-        towerIndex := findClosestTower(mouseX, mouseY, tower.value)
-        
-        if(towerIndex != 0) {
-            global actions .= ", {`n`t;" . tower.value . "`n`taction: `"sell`",`n`tcoords: [" . towerPositions[towerIndex][2] . ", " . towerPositions[towerIndex][3] "]`n}"
-            towerPositions.RemoveAt(towerIndex)
-        } else {
-            MsgBox("Couldn't find tower; Action aborted")
-        }
+    towerInput := InputBox("Enter the tower name: ", "Sell | Scripting Tool by Chantity")
+    tower := findClosestTower(mouseX, mouseY, towerInput.value)
+    if(towerInput.result == "OK" && tower.index != 0) {
+        global actions .= ", {`n`t;" . towerInput.value . "`n`taction: `"sell`",`n`tcoords: [" . tower.coords[1] . ", " . tower.coords[2] "]`n}"
     } else {
         ToolTip("Sell Action aborted")
         SetTimer () => ToolTip(), -2500
@@ -50,12 +43,12 @@ towerPositions := []
     mouseX := 0
     mouseY := 0
     MouseGetPos(&mouseX, &mouseY)
-    tower := InputBox("Enter the tower name: ", "Upgrade | Scripting Tool by Chantity")
-    if(tower.result == "OK") {
-        towerIndex := findClosestTower(mouseX, mouseY, tower.value)
-        if(towerIndex != 0) {
+    towerInput := InputBox("Enter the tower name: ", "Upgrade | Scripting Tool by Chantity")
+    if(towerInput.result == "OK") {
+        tower := findClosestTower(mouseX, mouseY, towerInput.value)
+        if(tower.index != 0) {
             upgrades := calcUpgrades(InputBox("Enter the upgrade sequence (using 1, 2, 3): ", "Upgrade | Scripting Tool by Chantity").value)
-            global actions .= ", {`n`t;" . tower.value . "`n`taction: `"upgrade`",`n`tcoords: [" . towerPositions[towerIndex][2] . ", " . towerPositions[towerIndex][3] . "],`n`tupgrades: [" . upgrades . "]`n}"
+            global actions .= ", {`n`t;" . towerInput.value . "`n`taction: `"upgrade`",`n`tcoords: [" . tower.coords[1] . ", " . tower.coords[2] . "],`n`tupgrades: [" . upgrades . "]`n}"
         } else {
             MsgBox("Couldn't find tower; Action aborted")
         }
@@ -104,20 +97,25 @@ calcUpgrades(upgrades) {
     }
 }
 
+/**
+ * 
+ * @returns \{index: int, coords: [int, int]}
+ */
 findClosestTower(x, y, tower) {
-    distance := 100.0
-    coords := []
-    index := 0
+    returnDistance := 100.0
+    returnCoords := []
+    returnIndex := 0
     for currentIndex, pos in towerPositions {
         if(pos[1] == tower) {
             vector := [x-pos[2], y-pos[3]] ;converting the two points into a vector
             tempDistance := Sqrt((vector[1]*vector[1])+(vector[2]*vector[2])) ;vector length
-            MsgBox(tempDistance)
-            if(tempDistance < distance) {
-                coords := [pos[2], pos[3]]
-                index := currentIndex
+            ToolTip("distance to closest " . tower . " [px]:" . Integer(tempDistance*100)/100) ;only 2 decimal places
+            SetTimer () => ToolTip(), -2500
+            if(tempDistance < returnDistance) {
+                returnCoords := [pos[2], pos[3]]
+                returnIndex := currentIndex
             }
         }
     }
-    return index
+    return {index: returnIndex, coords: returnCoords}
 }
