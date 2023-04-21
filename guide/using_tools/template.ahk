@@ -195,7 +195,6 @@ search(x, y, color) {
             break
         } else {
             sleep(config.speed)
-            ; MouseMove(x, y)
         }
     }
 }
@@ -284,9 +283,6 @@ selectMap(difficulty, page, mapNumberOnPage, map) {
             sleep(200)
         }
     }
-    px := 0
-    py := 0
-    bonusMap := ""
     Click(config.staticValues.mapCoords[mapNumberOnPage][1], config.staticValues.mapCoords[mapNumberOnPage][2])
     search(400, 281, 0xFFFFFF)
     if(config.maps.%map%.gamemode == "easy") {
@@ -312,14 +308,6 @@ selectMap(difficulty, page, mapNumberOnPage, map) {
     }
     search(1062, 17, 0xFFFFFF)
     return map
-}
-
-7:: {
-    ; mouseX := 0
-    ; mouseY := 0
-    ; MouseGetPos(&mouseX, &mouseY)
-    ; MsgBox(PixelGetColor(992, 526))
-    MouseMove(config.towers.village.buyTestCoords.x, config.towers.village.buyTestCoords.y)
 }
 
 8:: {
