@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All BTD6 Scripts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url(https://wallpapercave.com/wp/wp5318983.png);
+            background-size: cover;
+        }
+
+        h1 {
+            margin-left: min(20px, 5vw)
+        }
+
+        ul {
+            list-style: none;
+            margin: 10px 0 10px 0;
+        }
+
+        li {
+            margin-left: min(32px, 8vw)
+        }
+
+        /* From uiverse.io by @adamgiebl */
+        button {
+            color: white;
+            padding: 0.7em 1.7em;
+            font-size: 18px;
+            border-radius: 0.5em;
+            background: #ff0000;
+            border: 1px solid #e8e8e8;
+            transition: all .3s;
+            /* box-shadow: 6px 6px 12px #c5c5c5,
+                        -6px -6px 12px #ffffff; */
+            /* margin-bottom: 5px; */
+        }
+
+        button:hover {
+            border: 1px solid white;
+            cursor: pointer;
+        }
+
+        button:active {
+            box-shadow: 4px 4px 12px #c5c5c5,
+                -4px -4px 12px #ffffff;
+        }
+
+        zero-md {
+            width: calc(100vw - 60px);
+        }
+
+        .sticky-bar {
+            width: 100%;
+            background-color: rgb(64, 84, 180);
+            color: white;
+            font-size: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .sticky-bar div {
+            margin: 10px;
+        }
+
+        .script-embed {
+            display: grid;
+            grid: 20px auto 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .script-embed:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .warning {
+            color: red;
+        }
+
+        .blue-background {
+            background: rgb(64, 84, 180);
+        }
+
+        .green-background {
+            background: rgb(38, 219, 92);
+        }
+
+        .button-container {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 10px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2/webcomponents-loader.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@1/src/zero-md.min.js"></script>
+</head>
+<body>
+    <div class="sticky-bar">
+        <div>Script Guide</div>
+        <div class="ad">Provided by Chantity <a
+                href="https://www.youtube.com/channel/UC95YgwvgK9Cj1AMFWwOy5PA?sub_confirmation=1"
+                target="_blank"><button>Subscribe</button></a></div>
+    </div>
+    <div class="script-embed"><zero-md src="./README.md"></zero-md></div>
+</body>
+
+</html>

@@ -101,7 +101,7 @@ global config := {
     towers: {
         ben: {
             buyTestCoords: {
-                x: 1143,
+                x: 1141,
                 y: 182
             }
         },
