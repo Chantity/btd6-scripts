@@ -1,8 +1,8 @@
 ﻿#Requires AutoHotkey v2.0
 
-; template by Chantity
+; script by Chantity
 
-; works in 36.1
+; works in 37.2
 
 ;for nomenclature of special keys visit https://www.autohotkey.com/docs/v2/lib/Send.htm#keynames
 ;note: when you declare them in the hotkeys section down below,
@@ -178,13 +178,13 @@ global config := {
         }
     },
     maps: {
-        balance: {
-            gamemode: "easy",
+        infernal: {
+            gamemode: "impoppable",
             actions: [
                 {
                     action: "place",
                     tower: "dart",
-                    coords: [471, 378],
+                    coords: [817, 530],
                     test: false,
                     testColor: "0xFFFFFF",
                     targetting: 0,
@@ -192,43 +192,209 @@ global config := {
                 }, {
                     action: "place",
                     tower: "ben",
-                    coords: [559, 378],
+                    coords: [826, 575],
                     test: false,
                     testColor: "0xFFFFFF",
                     targetting: 0,
                     upgrades: [ ]
                 }, {
                     action: "place",
-                    tower: "boat",
-                    coords: [557, 535],
+                    tower: "sub",
+                    coords: [793, 170],
                     test: false,
                     testColor: "0xFFFFFF",
                     targetting: 0,
                     upgrades: [
-                        {path: 2, amount: 1},
-                        {path: 3, amount: 3},
-                        {path: 2, amount: 1},
+                        {path: 1, amount: 2},
                         {path: 3, amount: 1}
                     ]
                 }, {
-                    ;dart
-                    action: "upgrade",
-                    coords: [471, 378],
+                    action: "place",
+                    tower: "druid",
+                    coords: [775, 549],
+                    test: false,
+                    testColor: "0xFFFFFF",
+                    targetting: 0,
                     upgrades: [
-                        {path: 1, amount: 3},
-                        {path: 3, amount: 2},
+                        {path: 2, amount: 3},
                         {path: 1, amount: 1}
                     ]
                 }, {
-                    ;boat
-                    action: "sell",
-                    coords: [557, 535]
-                }, {
-                    ;dart
-                    action: "upgrade",
-                    coords: [471, 378],
+                    action: "place",
+                    tower: "farm",
+                    coords: [1043, 382],
+                    test: false,
+                    testColor: "0xFFFFFF",
+                    targetting: 0,
                     upgrades: [
+                        {path: 1, amount: 2},
+                        {path: 3, amount: 3}
+                    ]
+                }, {
+                    action: "place",
+                    tower: "boat",
+                    coords: [321, 526],
+                    test: false,
+                    testColor: "0xFFFFFF",
+                    targetting: 0,
+                    upgrades: [
+                        {path: 3, amount: 3}
+                    ]
+                }, {
+                    action: "place",
+                    tower: "farm",
+                    coords: [71, 385],
+                    test: false,
+                    testColor: "0xFFFFFF",
+                    targetting: 0,
+                    upgrades: [
+                        {path: 1, amount: 2},
+                        {path: 3, amount: 3}
+                    ]
+                }, {
+                    action: "place",
+                    tower: "boat",
+                    coords: [830, 135],
+                    test: false,
+                    testColor: "0xFFFFFF",
+                    targetting: 0,
+                    upgrades: [
+                        {path: 3, amount: 3},
+                        {path: 2, amount: 1}
+                    ]
+                }, {
+                    action: "place",
+                    tower: "boat",
+                    coords: [289, 568],
+                    test: false,
+                    testColor: "0xFFFFFF",
+                    targetting: 0,
+                    upgrades: [
+                        {path: 3, amount: 3},
+                        {path: 2, amount: 1}
+                    ]
+                }, {
+                    ;sub
+                    action: "upgrade",
+                    coords: [793, 170],
+                    upgrades: [
+                        {path: 3, amount: 2}
+                    ]
+                }, {
+                    ;farm
+                    action: "upgrade",
+                    coords: [71, 385],
+                    upgrades: [
+                        {path: 3, amount: 1}
+                    ]
+                }, {
+                    ;farm
+                    action: "upgrade",
+                    coords: [1043, 382],
+                    upgrades: [
+                        {path: 3, amount: 1}
+                    ]
+                }, {
+                    ;boat
+                    action: "upgrade",
+                    coords: [289, 568],
+                    upgrades: [
+                        {path: 3, amount: 1}
+                    ]
+                }, {
+                    action: "place",
+                    tower: "heli",
+                    coords: [314, 155],
+                    test: false,
+                    testColor: "0xFFFFFF",
+                    targetting: 0,
+                    upgrades: [
+                        {path: 1, amount: 2},
+                        {path: 2, amount: 2},
+                        {path: 1, amount: 3}
+                    ]
+                }, {
+                    action: "place",
+                    tower: "spactory",
+                    coords: [558, 467],
+                    test: false,
+                    testColor: "0xFFFFFF",
+                    targetting: 0,
+                    upgrades: [
+                        {path: 3, amount: 3},
+                        {path: 2, amount: 2}
+                    ]
+                }, {
+                    action: "place",
+                    tower: "alch",
+                    coords: [555, 512],
+                    test: false,
+                    testColor: "0xFFFFFF",
+                    targetting: 0,
+                    upgrades: [
+                        {path: 1, amount: 4}
+                    ]
+                }, {
+                    ;spactory
+                    action: "upgrade",
+                    coords: [558, 467],
+                    upgrades: [
+                        {path: 3, amount: 2}
+                    ]
+                }, {
+                    action: "place",
+                    tower: "alch",
+                    coords: [557, 202],
+                    test: false,
+                    testColor: "0xFFFFFF",
+                    targetting: 0,
+                    upgrades: [
+                        {path: 1, amount: 4}
+                    ]
+                }, {
+                    ;sub
+                    action: "sell",
+                    coords: [793, 170]
+                }, {
+                    action: "place",
+                    tower: "boat",
+                    coords: [792, 175],
+                    test: false,
+                    testColor: "0xFFFFFF",
+                    targetting: 0,
+                    upgrades: [
+                        {path: 1, amount: 5},
+                        {path: 3, amount: 2}
+                    ]
+                }, {
+                    action: "place",
+                    tower: "sniper",
+                    coords: [734, 112],
+                    test: false,
+                    testColor: "0xFFFFFF",
+                    targetting: 0,
+                    upgrades: [
+                        {path: 2, amount: 2},
+                        {path: 3, amount: 5}
+                    ]
+                }, {
+                    ;druid
+                    action: "upgrade",
+                    coords: [775, 549],
+                    upgrades: [
+                        {path: 2, amount: 2},
                         {path: 1, amount: 1}
+                    ]
+                }, {
+                    action: "place",
+                    tower: "spactory",
+                    coords: [556, 253],
+                    test: false,
+                    testColor: "0xFFFFFF",
+                    targetting: 0,
+                    upgrades: [
+                        {path: 2, amount: 2},
+                        {path: 1, amount: 5}
                     ]
                 }
             ]}
@@ -244,7 +410,18 @@ search(x, y, color) {
             break
         } else {
             sleep(config.speed)
-            ; MouseMove(x, y)
+        }
+    }
+}
+
+exactSearch(x, y, color) {
+    px := 0
+    py := 0
+    loop {
+        if (PixelSearch(&px, &py, x, y, x, y, color, 0)) {
+            break
+        } else {
+            sleep(config.speed)
         }
     }
 }
@@ -297,7 +474,7 @@ changeTargetting(x, y, amount) {
  * @param page Page within that difficulty that the map is on
  * @param mapNumberOnPage Position of the map within that page (top left = 1, bottom right = 6)
  * @param map Name of the map
- * @returns map Name of the map
+ * @returns Name of the map
  */
 selectMap(difficulty, page, mapNumberOnPage, map) {
     search(550, 620, 0xFFFFFF) ; play button on home screen
@@ -333,9 +510,6 @@ selectMap(difficulty, page, mapNumberOnPage, map) {
             sleep(200)
         }
     }
-    px := 0
-    py := 0
-    bonusMap := ""
     Click(config.staticValues.mapCoords[mapNumberOnPage][1], config.staticValues.mapCoords[mapNumberOnPage][2])
     search(400, 281, 0xFFFFFF)
     if(config.maps.%map%.gamemode == "easy") {
@@ -363,17 +537,9 @@ selectMap(difficulty, page, mapNumberOnPage, map) {
     return map
 }
 
-7:: {
-    ; mouseX := 0
-    ; mouseY := 0
-    ; MouseGetPos(&mouseX, &mouseY)
-    ; MsgBox(PixelGetColor(992, 526))
-    MouseMove(config.towers.village.buyTestCoords.x, config.towers.village.buyTestCoords.y)
-}
-
 8:: {
     start: ; start screen
-    map := selectMap("intermediate", 1, 6, "balance")
+    map := selectMap("expert", 1, 5, "infernal")
     sleep(config.speed)
     send("{" hotkeys.functional.play "}")
     sleep(config.speed)
@@ -403,7 +569,7 @@ selectMap(difficulty, page, mapNumberOnPage, map) {
 
     finish:
     ; insta
-    search(623, 441, 0xFFD900)
+    exactSearch(623, 441, 0xFFD900)
     sleep(config.speed)
     click
     sleep(config.speed)

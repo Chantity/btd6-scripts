@@ -94,8 +94,8 @@ global config := {
             [1000, 408]
         ],
         maps: [ ;per page
-            ["dark_dungeons", "sanctuary", "ravine", "flooded_valley", "infernal", "bloody_puddles"],
-            ["workshop", "quad", "dark_castle", "muddy_puddles", "ouch"]
+            ["glacial_trail", "dark_dungeons", "sanctuary", "ravine", "flooded_valley", "infernal"],
+            ["bloody_puddles", "workshop", "quad", "dark_castle", "muddy_puddles", "ouch"]
         ]
     },
     towers: {
@@ -144,14 +144,14 @@ global config := {
         },
         heli: {
             buyTestCoords: {
-                x: 1227,
-                y: 622
+                x: 1225,
+                y: 623
             }
         },
         alch: { ;heli price coords
             buyTestCoords: {
-                x: 1227,
-                y: 622
+                x: 1225,
+                y: 623
             }
         },
         druid: { ;ice price coords
@@ -162,20 +162,20 @@ global config := {
         },
         farm: { ;heli price coords
             buyTestCoords: { ;only use village in your strategy if you already placed a military tower
-                x: 1227,
-                y: 622
+                x: 1225,
+                y: 623
             }
         },
         village: { ;heli price coords
             buyTestCoords: { ;only use village in your strategy if you already placed a military tower
-                x: 1227,
-                y: 622
+                x: 1225,
+                y: 623
             }
         },
         spactory: { ;heli price coords
-            buyTestCoords: { ;can be used with military discount
-                x: 1227,
-                y: 622
+            buyTestCoords: { ;can be used with military discount ONLY if spike factory discount is also active
+                x: 1225,
+                y: 623
             }
         },
         engi: { ;ice price coords
@@ -186,6 +186,110 @@ global config := {
         }
     },
     maps: {
+        glacial_trail: {
+            gamemode: "easy",
+            actions: [{
+                action: "place",
+                tower: "dart",
+                coords: [211, 357],
+                test: false,
+                testColor: "0xFFFFFF",
+                targetting: 0,
+                upgrades: [ ]
+            }, {
+                action: "place",
+                tower: "ben",
+                coords: [1069, 127],
+                test: false,
+                testColor: "0xFFFFFF",
+                targetting: 0,
+                upgrades: [ ]
+            }, {
+                ;dart
+                action: "upgrade",
+                coords: [207, 357],
+                upgrades: [
+                    {path: 3, amount: 3},
+                    {path: 2, amount: 2}
+                ]
+            }, {
+                action: "place",
+                tower: "spactory",
+                coords: [918, 447],
+                test: false,
+                testColor: "0xFFFFFF",
+                targetting: 0,
+                upgrades: [
+                    {path: 3, amount: 3},
+                    {path: 1, amount: 2}
+                ]
+            }, {
+                action: "place",
+                tower: "druid",
+                coords: [157, 367],
+                test: false,
+                testColor: "0xFFFFFF",
+                targetting: 0,
+                upgrades: [
+                    {path: 2, amount: 3},
+                    {path: 1, amount: 1}
+                ]
+            }, {
+                action: "place",
+                tower: "sub",
+                coords: [919, 638],
+                test: false,
+                testColor: "0xFFFFFF",
+                targetting: 0,
+                upgrades: [ ]
+            }, {
+                action: "sell",
+                coords: [919, 638]
+            }, {
+                action: "place",
+                tower: "spactory",
+                coords: [957, 494],
+                test: false,
+                testColor: "0xFFFFFF",
+                targetting: 0,
+                upgrades: [
+                    {path: 3, amount: 3},
+                    {path: 1, amount: 2}
+                ]
+            }, {
+                action: "place",
+                tower: "bomb",
+                coords: [124, 262],
+                test: false,
+                testColor: "0xFFFFFF",
+                targetting: 3,
+                upgrades: [
+                    {path: 2, amount: 3},
+                    {path: 1, amount: 2}
+                ]
+            }, {
+                action: "place",
+                tower: "druid",
+                coords: [969, 127],
+                test: false,
+                testColor: "0xFFFFFF",
+                targetting: 0,
+                upgrades: [
+                    {path: 2, amount: 3},
+                    {path: 1, amount: 1}
+                ]
+            }, {
+                action: "place",
+                tower: "druid",
+                coords: [869, 127],
+                test: false,
+                testColor: "0xFFFFFF",
+                targetting: 0,
+                upgrades: [
+                    {path: 2, amount: 3},
+                    {path: 1, amount: 1}
+                ]
+            }]},
         dark_dungeons: {
             gamemode: "easy",
             actions: [{
@@ -949,6 +1053,74 @@ selectMapWithBonus() {
     reload
 }
 
+7:: {
+    ; start: ; start screen
+    ; search(550, 620, 0xFFFFFF)
+    ; sleep(config.speed)
+    ; click(550, 620)
+    ; sleep(800)
+    ; click(391, 650)
+    ; sleep(200)
+    ; click(900, 650)
+    ; sleep(1000)
+
+    ; Click(config.staticValues.bonusCoords[1][1], config.staticValues.bonusCoords[1][2])
+    ; search(400, 281, 0xFFFFFF)
+    ; Click(400, 281) ;easy
+    ; sleep(config.speed)
+    ; search(420,390, 0xFFFFFF) ;standard
+    ; Click(420,390)
+    ; sleep(config.speed)
+    ; Click(721, 484) ;delete saved game
+    ; Click(721, 484)
+    ; search(1062, 17, 0xFFFFFF)
+
+    ; map := "glacial_trail"
+    ; ; map := selectMapWithBonus()
+    ; sleep(config.speed)
+    ; send("{" hotkeys.functional.play "}")
+    ; sleep(config.speed)
+    ; send("{" hotkeys.functional.play "}")
+    ; for tower in config.maps.%map%.actions {
+    ;     if(tower.action == "place") {
+    ;         placeTower(tower.tower, tower.coords[1], tower.coords[2], tower.test, tower.testColor)
+    ;         selectTower(tower.coords[1], tower.coords[2])
+    ;         changeTargetting(tower.coords[1], tower.coords[2], tower.targetting)
+    ;         for upgrade in tower.upgrades {
+    ;             upgradetower(tower.coords[1], tower.coords[2], upgrade.path, upgrade.amount)
+    ;         }
+    ;         Send("{" hotkeys.functional.deselect "}")
+    ;         sleep(config.speed)
+    ;     } else if(tower.action == "sell") {
+    ;         selectTower(tower.coords[1], tower.coords[2])
+    ;         send("{" hotkeys.functional.sell "}")
+    ;     } else if(tower.action == "upgrade") {
+    ;         selectTower(tower.coords[1], tower.coords[2])
+    ;         for upgrade in tower.upgrades {
+    ;             upgradetower(tower.coords[1], tower.coords[2], upgrade.path, upgrade.amount)
+    ;         }
+    ;         Send("{" hotkeys.functional.deselect "}")
+    ;         sleep(config.speed)
+    ;     }
+    ; }
+
+    ; finish:
+    ; ; next
+    ; search(613, 600, 0xFFFFFF)
+    ; sleep(config.speed)
+    ; search(534, 459, 0x548AD3)
+    ; sleep(config.speed)
+    ; click(618, 603)
+    ; ; home
+    ; search(475, 559, 0xFFFFFF)
+    ; sleep(config.speed)
+    ; search(589, 205, 0xFFFFFF)
+    ; sleep(config.speed)
+    ; click(475, 559)
+
+    ; goto("start")
+}
+
 8:: {
     start: ; start screen
     search(550, 620, 0xFFFFFF)
@@ -961,6 +1133,7 @@ selectMapWithBonus() {
     sleep(1000)
 
     map := selectMapWithBonus()
+    ; map := selectMapWithBonus()
     sleep(config.speed)
     send("{" hotkeys.functional.play "}")
     sleep(config.speed)

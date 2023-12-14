@@ -135,15 +135,15 @@ global config := {
             }
         },
         heli: {
-            buyTestCoords: { ;only use heli in your strategy if you already placed a military tower
-                x: 1227,
-                y: 622
+            buyTestCoords: {
+                x: 1225,
+                y: 623
             }
         },
         alch: { ;heli price coords
             buyTestCoords: {
-                x: 1227,
-                y: 622
+                x: 1225,
+                y: 623
             }
         },
         druid: { ;ice price coords
@@ -153,21 +153,21 @@ global config := {
             }
         },
         farm: { ;heli price coords
-            buyTestCoords: { ;only use farm in your strategy if you already placed a military tower
-                x: 1227,
-                y: 622
+            buyTestCoords: { ;only use village in your strategy if you already placed a military tower
+                x: 1225,
+                y: 623
             }
         },
         village: { ;heli price coords
             buyTestCoords: { ;only use village in your strategy if you already placed a military tower
-                x: 1227,
-                y: 622
+                x: 1225,
+                y: 623
             }
         },
         spactory: { ;heli price coords
-            buyTestCoords: { ;only use spactory in your strategy if you already placed a military tower
-                x: 1227,
-                y: 622
+            buyTestCoords: { ;can be used with military discount ONLY if spike factory discount is also active
+                x: 1225,
+                y: 623
             }
         },
         engi: { ;ice price coords

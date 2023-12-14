@@ -107,7 +107,7 @@ findClosestTower(x, y, tower) {
     returnIndex := 0
     for currentIndex, pos in towerPositions {
         if(pos[1] == tower) {
-            vector := [x-pos[2], y-pos[3]] ;converting the two points into a vector
+            vector := [x-pos[2], y-pos[3]] ;converting the two points (mouse position to tower position) into a vector
             tempDistance := Sqrt((vector[1]*vector[1])+(vector[2]*vector[2])) ;vector length
             ToolTip("distance to closest " . tower . " [px]:" . Integer(tempDistance*100)/100) ;only 2 decimal places
             SetTimer () => ToolTip(), -2500
