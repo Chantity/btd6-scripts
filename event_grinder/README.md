@@ -4,7 +4,7 @@
 
 **AHK Version:** [v2.0](https://www.autohotkey.com/download/ahk-v2.exe)
 
-**Last known working BTD6 version:** 36.1
+**Last known working BTD6 version:** 41.1
 
 **Usage Instructions *(.ahk file)*:**
 - Start the game and set it to 1280x720 Window Mode. If you dont have that option, go to your Steam library, right click BTD6, click "Properties..." and paste the following in the Lauch Options field in the newly opened window:`-screen-width 1280 -screen-height 720`. Then close the window, start the game and set it to Window Mode.

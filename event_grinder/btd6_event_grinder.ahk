@@ -3,12 +3,13 @@
 ; Original (21.0) by infinity
 ; recoded and updated by Chantity
 
-; works in 36.1
+; works in 41.1 - Birthday event
 
 ;for nomenclature of special keys visit https://www.autohotkey.com/docs/v2/lib/Send.htm#keynames
 ;note: when you declare them in the hotkeys section down below,
 ;use quotation marks instead of curly braces (e.g. "Esc" instead of {Esc}).
 ;also use quotation marks for everything other than numbers
+
 
 global hotkeys := {
     towers: {
@@ -71,6 +72,8 @@ global hotkeys := {
 ;       ]
 ;     }
 
+
+;config speed, upgrade/tower locations, map instructions
 global config := {
     speed: 250,
     staticValues: {
@@ -86,12 +89,12 @@ global config := {
         },
         nextPageButton: [1100, 290],
         bonusCoords: [
-            [435, 197],
-            [718, 198],
-            [1000, 197],
-            [432, 401],
+            [435, 198],
+            [718, 197],
+            [997, 191],
+            [432, 403],
             [716, 409],
-            [1000, 408]
+            [1002, 412] 
         ],
         maps: [ ;per page
             ["glacial_trail", "dark_dungeons", "sanctuary", "ravine", "flooded_valley", "infernal"],
@@ -161,7 +164,7 @@ global config := {
             }
         },
         farm: { ;heli price coords
-            buyTestCoords: { ;only use village in your strategy if you already placed a military tower
+            buyTestCoords: { ;only use farm in your strategy if you already placed a military tower
                 x: 1225,
                 y: 623
             }
@@ -943,12 +946,14 @@ global config := {
         }
 }
 
+;victory counter
+victories := Map("overall", 0)
 
 search(x, y, color) {
     px := 0
     py := 0
     loop {
-        if (PixelSearch(&px, &py, x, y, x, y, color, 10)) {
+        if (PixelSearch(&px, &py, x, y, x, y, color, 20)) {
             break
         } else {
             sleep(config.speed)
@@ -1017,7 +1022,7 @@ selectMapWithBonus() {
             sleep(config.speed)
             ; MouseMove(config.staticValues.bonusCoords[i][1], config.staticValues.bonusCoords[i][2])
             ; MsgBox(PixelGetColor(config.staticValues.bonusCoords[i][1], config.staticValues.bonusCoords[i][2]))
-            if(PixelSearch(&px, &py, config.staticValues.bonusCoords[i][1], config.staticValues.bonusCoords[i][2], config.staticValues.bonusCoords[i][1], config.staticValues.bonusCoords[i][2], 0xFFFFFF)) {
+            if(PixelSearch(&px, &py, config.staticValues.bonusCoords[i][1], config.staticValues.bonusCoords[i][2], config.staticValues.bonusCoords[i][1], config.staticValues.bonusCoords[i][2], 0xFFFFFF,10)) {
                 Click(config.staticValues.bonusCoords[i][1], config.staticValues.bonusCoords[i][2])
                 search(400, 281, 0xFFFFFF)
                 if(config.maps.%map%.gamemode == "easy") {
@@ -1122,6 +1127,13 @@ selectMapWithBonus() {
 }
 
 8:: {
+    ;init victory counter
+    for page in config.staticValues.maps {
+        for map in page {
+            victories[map] := 0
+        }
+    }
+    ; MsgBox(String(victories))
     start: ; start screen
     search(550, 620, 0xFFFFFF)
     sleep(config.speed)
@@ -1133,7 +1145,6 @@ selectMapWithBonus() {
     sleep(1000)
 
     map := selectMapWithBonus()
-    ; map := selectMapWithBonus()
     sleep(config.speed)
     send("{" hotkeys.functional.play "}")
     sleep(config.speed)
@@ -1174,6 +1185,8 @@ selectMapWithBonus() {
     search(589, 205, 0xFFFFFF)
     sleep(config.speed)
     click(475, 559)
+    victories["overall"] += 1
+    victories[map] += 1
 
     goto("start")
   ;]
@@ -1186,6 +1199,14 @@ selectMapWithBonus() {
 }
 
 0:: {
-    MsgBox("Event Grinder Stopped", "Exit", "0x0")
+    ; ExitSummary2 := "Total Victories - " victories "`r`rGlacial Trail - " victorymap1 "`rDark Dungeons - " victorymap2 "`rSanctuary - " victorymap3 "`rRavine - " victorymap4 "`rFlooded Valley - " victorymap5 "`rInfernal - " victorymap6 "`rBloody Puddles - " victorymap7 "`rWorkshop - " victorymap8 "`rQuad - " victorymap9 "`rDark Castle - " victorymap10 "`rMuddy Puddles - " victorymap11 "`r#Ouch - " victorymap12 "`r`rYoutube: Chantity BTD6`rThank you for taking ten seconds to give me a like/subscribe!"
+    ExitSummary := "Victories: `n`nOverall - " String(victories["overall"]) "`n"
+    for page in config.staticValues.maps {
+        for map in page {
+            ExitSummary .= StrTitle(StrReplace(map, "_", " ")) " - " String(victories[map]) "`n"
+        }
+    }
+    ExitSummary .= "`n`nYoutube: Chantity BTD6`nThank you for taking ten seconds to give me a like/subscribe!`n`nAlso shoutout to @tucsonmm on discord for helping me update the script to v41 and the idea to adding this end screen!"
+    MsgBox(ExitSummary, "Event Grinder Stopped", "0x0")
     ExitApp
 }
