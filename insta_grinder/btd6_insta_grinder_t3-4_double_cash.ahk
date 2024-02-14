@@ -539,7 +539,7 @@ selectMap(difficulty, page, mapNumberOnPage, map) {
 
 8:: {
     start: ; start screen
-    map := selectMap("expert", 1, 5, "infernal")
+    map := selectMap("expert", 1, 6, "infernal")
     sleep(config.speed)
     send("{" hotkeys.functional.play "}")
     sleep(config.speed)
