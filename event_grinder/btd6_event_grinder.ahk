@@ -3,7 +3,7 @@
 ; Original (21.0) by infinity
 ; recoded and updated by Chantity
 
-; works in 41.1 - Birthday event
+; works in v42
 
 ;for nomenclature of special keys visit https://www.autohotkey.com/docs/v2/lib/Send.htm#keynames
 ;note: when you declare them in the hotkeys section down below,
