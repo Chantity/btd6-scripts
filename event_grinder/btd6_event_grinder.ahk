@@ -229,7 +229,7 @@ global config := {
             }, {
                 action: "place",
                 tower: "druid",
-                coords: [157, 367],
+                coords: [161, 368],
                 test: false,
                 testColor: "0xFFFFFF",
                 targetting: 0,
@@ -314,7 +314,7 @@ global config := {
                 }, {
                 action: "place",
                 tower: "sniper",
-                coords: [198, 105],
+                coords: [200, 107],
                 test: false,
                 testColor: "0xFFFFFF",
                 targetting: 1,
@@ -332,7 +332,7 @@ global config := {
                 }, {
                 action: "place",
                 tower: "village",
-                coords: [499, 658],
+                coords: [493, 656],
                 test: false,
                 testColor: "0xFFFFFF",
                 targetting: 0,
@@ -343,7 +343,7 @@ global config := {
                 }, {
                 action: "place",
                 tower: "druid",
-                coords: [478, 604],
+                coords: [473, 602],
                 test: false,
                 testColor: "0xFFFFFF",
                 targetting: 3,
@@ -365,7 +365,7 @@ global config := {
                 }, {
                 action: "place",
                 tower: "druid",
-                coords: [378, 634],
+                coords: [379, 634],
                 test: false,
                 testColor: "0xFFFFFF",
                 targetting: 0,
@@ -425,9 +425,9 @@ global config := {
                 }, {
                 action: "place",
                 tower: "sniper",
-                coords: [654, 654],
+                coords: [460, 644],
                 test: true,
-                testColor: "0x7B7427",
+                testColor: "0x685F19",
                 targetting: 3,
                 upgrades: [
                     {path: 1, amount: 1},
@@ -436,9 +436,9 @@ global config := {
                 }, {
                 action: "place",
                 tower: "sniper",
-                coords: [564, 651],
-                test: false,
-                testColor: "0xFFFFFF",
+                coords: [658, 644],
+                test: true,
+                testColor: "0x736E24",
                 targetting: 0,
                 upgrades: [
                     {path: 2, amount: 2},
@@ -450,7 +450,7 @@ global config := {
             actions: [{
                 action: "place",
                 tower: "dart",
-                coords: [188, 442],
+                coords: [190, 441],
                 test: false,
                 testColor: "0x83E5CB",
                 targetting: 0,
@@ -672,7 +672,7 @@ global config := {
                 }, {
                 action: "place",
                 tower: "village",
-                coords: [842, 173],
+                coords: [841, 173],
                 test: false,
                 testColor: "0xFFFFFF",
                 targetting: 0,
@@ -715,7 +715,7 @@ global config := {
                 }, {
                 action: "place",
                 tower: "druid",
-                coords: [794, 135],
+                coords: [793, 135],
                 test: false,
                 testColor: "0x7B7427",
                 targetting: 0,
@@ -1059,71 +1059,47 @@ selectMapWithBonus() {
 }
 
 7:: {
-    ; start: ; start screen
-    ; search(550, 620, 0xFFFFFF)
-    ; sleep(config.speed)
-    ; click(550, 620)
-    ; sleep(800)
-    ; click(391, 650)
-    ; sleep(200)
-    ; click(900, 650)
-    ; sleep(1000)
+    map := "ouch"
+    sleep(config.speed)
+    send("{" hotkeys.functional.play "}")
+    sleep(config.speed)
+    send("{" hotkeys.functional.play "}")
+    for tower in config.maps.%map%.actions {
+        if(tower.action == "place") {
+            placeTower(tower.tower, tower.coords[1], tower.coords[2], tower.test, tower.testColor)
+            selectTower(tower.coords[1], tower.coords[2])
+            changeTargetting(tower.coords[1], tower.coords[2], tower.targetting)
+            for upgrade in tower.upgrades {
+                upgradetower(tower.coords[1], tower.coords[2], upgrade.path, upgrade.amount)
+            }
+            Send("{" hotkeys.functional.deselect "}")
+            sleep(config.speed)
+        } else if(tower.action == "sell") {
+            selectTower(tower.coords[1], tower.coords[2])
+            send("{" hotkeys.functional.sell "}")
+        } else if(tower.action == "upgrade") {
+            selectTower(tower.coords[1], tower.coords[2])
+            for upgrade in tower.upgrades {
+                upgradetower(tower.coords[1], tower.coords[2], upgrade.path, upgrade.amount)
+            }
+            Send("{" hotkeys.functional.deselect "}")
+            sleep(config.speed)
+        }
+    }
 
-    ; Click(config.staticValues.bonusCoords[1][1], config.staticValues.bonusCoords[1][2])
-    ; search(400, 281, 0xFFFFFF)
-    ; Click(400, 281) ;easy
-    ; sleep(config.speed)
-    ; search(420,390, 0xFFFFFF) ;standard
-    ; Click(420,390)
-    ; sleep(config.speed)
-    ; Click(721, 484) ;delete saved game
-    ; Click(721, 484)
-    ; search(1062, 17, 0xFFFFFF)
-
-    ; map := "glacial_trail"
-    ; ; map := selectMapWithBonus()
-    ; sleep(config.speed)
-    ; send("{" hotkeys.functional.play "}")
-    ; sleep(config.speed)
-    ; send("{" hotkeys.functional.play "}")
-    ; for tower in config.maps.%map%.actions {
-    ;     if(tower.action == "place") {
-    ;         placeTower(tower.tower, tower.coords[1], tower.coords[2], tower.test, tower.testColor)
-    ;         selectTower(tower.coords[1], tower.coords[2])
-    ;         changeTargetting(tower.coords[1], tower.coords[2], tower.targetting)
-    ;         for upgrade in tower.upgrades {
-    ;             upgradetower(tower.coords[1], tower.coords[2], upgrade.path, upgrade.amount)
-    ;         }
-    ;         Send("{" hotkeys.functional.deselect "}")
-    ;         sleep(config.speed)
-    ;     } else if(tower.action == "sell") {
-    ;         selectTower(tower.coords[1], tower.coords[2])
-    ;         send("{" hotkeys.functional.sell "}")
-    ;     } else if(tower.action == "upgrade") {
-    ;         selectTower(tower.coords[1], tower.coords[2])
-    ;         for upgrade in tower.upgrades {
-    ;             upgradetower(tower.coords[1], tower.coords[2], upgrade.path, upgrade.amount)
-    ;         }
-    ;         Send("{" hotkeys.functional.deselect "}")
-    ;         sleep(config.speed)
-    ;     }
-    ; }
-
-    ; finish:
-    ; ; next
-    ; search(613, 600, 0xFFFFFF)
-    ; sleep(config.speed)
-    ; search(534, 459, 0x548AD3)
-    ; sleep(config.speed)
-    ; click(618, 603)
-    ; ; home
-    ; search(475, 559, 0xFFFFFF)
-    ; sleep(config.speed)
-    ; search(589, 205, 0xFFFFFF)
-    ; sleep(config.speed)
-    ; click(475, 559)
-
-    ; goto("start")
+    finish:
+    ; next
+    search(613, 600, 0xFFFFFF)
+    sleep(config.speed)
+    search(534, 459, 0x548AD3)
+    sleep(config.speed)
+    click(618, 603)
+    ; home
+    search(475, 559, 0xFFFFFF)
+    sleep(config.speed)
+    search(589, 205, 0xFFFFFF)
+    sleep(config.speed)
+    click(475, 559)
 }
 
 8:: {
@@ -1133,7 +1109,7 @@ selectMapWithBonus() {
             victories[map] := 0
         }
     }
-    ; MsgBox(String(victories))
+    
     start: ; start screen
     search(550, 620, 0xFFFFFF)
     sleep(config.speed)
@@ -1206,7 +1182,7 @@ selectMapWithBonus() {
             ExitSummary .= StrTitle(StrReplace(map, "_", " ")) " - " String(victories[map]) "`n"
         }
     }
-    ExitSummary .= "`n`nYoutube: Chantity BTD6`nThank you for taking ten seconds to give me a like/subscribe!`n`nAlso shoutout to @tucsonmm on discord for helping me update the script to v41 and the idea to adding this end screen!"
+    ExitSummary .= "`n`nYouTube: Chantity BTD6 (@btdchantity)`nThank you for taking ten seconds to give me a like/subscribe!`n`nAlso shoutout to @tucsonmm on discord for helping me update the script to v41 and the idea to adding this end screen!"
     MsgBox(ExitSummary, "Event Grinder Stopped", "0x0")
     ExitApp
 }

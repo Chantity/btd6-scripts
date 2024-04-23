@@ -11,6 +11,8 @@ towerPositions := []
 }
 
 7:: {
+    MsgBox("place action started; will continue once you leftclick on your tower position")
+    KeyWait "LButton", "D"
     mouseX := 0
     mouseY := 0
     MouseGetPos(&mouseX, &mouseY)
